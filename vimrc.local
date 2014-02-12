@@ -28,9 +28,7 @@ set nobackup
 set showcmd
 
 if has('autocmd')
-  autocmd FileType python set expandtab
   autocmd FileType html,xml set listchars-=tab:>.
-  autocmd FileType php set expandtab tabstop=8 shiftwidth=4 encoding=utf-8 scrolloff=3
 endif
 
 nnoremap ; :
@@ -85,15 +83,11 @@ set formatoptions=qroct
 augroup filetypedetect
     au! BufRead,BufNewFile *.pp setfiletype puppet
     au! BufRead,BufNewFile *httpd.conf setfiletype apache
-    au! BufRead,BufNewFile *inc setfiletype php
-    au! BufRead,BufNewFile *.py set sw=4 ts=4 sts=4 et
 augroup END
 
 augroup Programming
 " clear auto commands for this group
 autocmd!
-autocmd BufWritePost *.php !php -d display_errors=on -l <afile>
-autocmd BufWritePost *.inc !php -d display_errors=on -l <afile>
 autocmd BufWritePost *httpd*.conf !/etc/rc.d/init.d/httpd configtest
 autocmd BufWritePost *.bash !bash -n <afile>
 autocmd BufWritePost *.sh !bash -n <afile>
@@ -101,17 +95,11 @@ autocmd BufWritePost *.pl !perl -c <afile>
 autocmd BufWritePost *.perl !perl -c <afile>
 autocmd BufWritePost *.xml !xmllint --noout <afile>
 autocmd BufWritePost *.xsl !xmllint --noout <afile>
-autocmd BufWritePost *.js !jshint <afile>
-au BufRead,BufNewFile *.js set ft=javascript.jquery
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd BufWritePost *.rb !ruby -c <afile>
 autocmd BufWritePost *.pp !puppet --parseonly <afile>
-autocmd BufWritePost *.py call Flake8()
 au BufRead,BufNewFile *.md set filetype=markdown
 augroup en
 
-autocmd FileType python map <buffer> \p :call Flake8()<CR>
-let g:flake8_builtins="_,apply"
 
 set ls=2 " always show status line
 
@@ -145,11 +133,4 @@ au BufEnter * match ExtraWhitespace /\s\+$/
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 au InsertLeave * match ExtraWhiteSpace /\s\+$/
 
-let php_sql_query=1
-
-let g:phpqa_messdetector_ruleset = "/usr/share/php/data/php_pmd/resources/rulesets"
-let g:phpqa_codesniffer_args = "--standard=PSR2"
-
-
 imap jj <Esc>
-autocmd! bufwritepost .vimrc source ~/.vimrc
