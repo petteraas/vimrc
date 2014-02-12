@@ -101,3 +101,16 @@ endif
 if filereadable(expand("~/.vimrc.work"))
   source ~/.vimrc.work
 endif
+
+if filereadable(expand("~/.vimrc.php"))
+  source ~/.vimrc.php
+endif
+
+if filereadable(expand("~/.vimrc.python"))
+  source ~/.vimrc.python
+endif
+
+if filereadable(expand("~/.vimrc.js"))
+  source ~/.vimrc.js
+endif
+
