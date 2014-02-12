@@ -1,0 +1,16 @@
+if has('autocmd')
+  autocmd FileType python set expandtab
+endif
+
+" Detect filetypes
+augroup filetypedetect
+    au! BufRead,BufNewFile *.py set sw=4 ts=4 sts=4 et
+augroup END
+
+augroup Programming
+autocmd!
+autocmd BufWritePost *.py call Flake8()
+augroup en
+
+autocmd FileType python map <buffer> \p :call Flake8()<CR>
+let g:flake8_builtins="_,apply"
