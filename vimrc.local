@@ -153,3 +153,4 @@ let g:phpqa_codesniffer_args = "--standard=PSR2"
 let g:lodgeit_url = "http://paste.fronter.net"
 
 imap jj <Esc>
+autocmd! bufwritepost .vimrc source ~/.vimrc
