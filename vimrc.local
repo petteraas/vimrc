@@ -150,7 +150,6 @@ let php_sql_query=1
 let g:phpqa_messdetector_ruleset = "/usr/share/php/data/php_pmd/resources/rulesets"
 let g:phpqa_codesniffer_args = "--standard=PSR2"
 
-let g:lodgeit_url = "http://paste.fronter.net"
 
 imap jj <Esc>
 autocmd! bufwritepost .vimrc source ~/.vimrc
