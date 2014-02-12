@@ -93,3 +93,11 @@ endif
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
+
+if filereadable(expand("~/.vimrc.home"))
+  source ~/.vimrc.home
+endif
+
+if filereadable(expand("~/.vimrc.work"))
+  source ~/.vimrc.work
+endif
